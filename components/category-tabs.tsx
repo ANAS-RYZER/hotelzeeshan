@@ -24,7 +24,7 @@ export default function CategoryTabs({ activeCategory, onCategoryChange }: Categ
                   : "bg-secondary text-secondary-foreground hover:bg-secondary/80",
               )}
             >
-              <img src={category.images} alt={category.label} className="w-6 h-6 rounded-full" />
+              <img src={category.icon} alt={category.label} className="w-6 h-6 rounded-full" />
               <span>{category.label}</span>
             </button>
           ))}

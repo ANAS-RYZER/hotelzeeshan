@@ -13,7 +13,7 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = useState("biryaniSpecial")
   const sectionRefs = useRef<{ [key: string]: HTMLDivElement | null }>({})
 
-  const addToCart = (item: MenuItem) => {
+  const addToCart = (item: Omit<CartItem, "quantity">) => {
     setCart((prev) => {
       const existing = prev.find((c) => c.slug === item.slug)
       if (existing) {
