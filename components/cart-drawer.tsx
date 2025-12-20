@@ -11,7 +11,7 @@ interface CartDrawerProps {
   isOpen: boolean
   onClose: () => void
   cart: CartItem[]
-  onAdd: (item: MenuItem) => void
+  onAdd: (item: Omit<CartItem, "quantity">) => void
   onRemove: (slug: string) => void
   onClear: () => void
 }
@@ -21,8 +21,8 @@ export default function CartDrawer({ isOpen, onClose, cart, onAdd, onRemove, onC
   const { toast } = useToast()
 
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
- 
-  const total = subtotal 
+
+  const total = subtotal
 
   const handlePlaceOrder = async () => {
     setIsPlacingOrder(true)
@@ -69,7 +69,6 @@ export default function CartDrawer({ isOpen, onClose, cart, onAdd, onRemove, onC
       {/* Overlay */}
       {isOpen && <div className="fixed inset-0 bg-foreground/50 z-50 transition-opacity overflow-y-auto" onClick={onClose} />}
 
-      {/* Drawer */}
       <div
         className={`fixed right-0 top-0 h-full w-full max-w-md bg-card z-50 shadow-2xl transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"
           }`}
@@ -136,7 +135,7 @@ export default function CartDrawer({ isOpen, onClose, cart, onAdd, onRemove, onC
                     <span className="text-muted-foreground">Subtotal</span>
                     <span>₹{subtotal}</span>
                   </div>
-                
+
                   <div className="flex justify-between text-lg font-bold pt-2 border-t border-border">
                     <span>Total</span>
                     <span className="text-primary">₹{total}</span>
@@ -159,7 +158,7 @@ export default function CartDrawer({ isOpen, onClose, cart, onAdd, onRemove, onC
                         Placing Order...
                       </>
                     ) : (
-                      "Place Order"
+                      "Print Token"
                     )}
                   </Button>
                 </div>

@@ -21,8 +21,12 @@ export default function Nav({ cartCount = 0, onCartClick }: NavProps) {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-           <Image src="/logo.jpeg" alt="Logo" width={50} height={50} />
-           <h1 className="text-xl font-semibold"> Hotel Zeeshan </h1>
+           <Image src="/logo.jpeg" alt="Logo" width={30} height={30} className="rounded-full" />
+          
+          <div className="flex flex-col items-center gap-0">
+          <h1 className="text-md font-semibold">  Zeeshan Biryani </h1>
+          <p> Bhimavaram </p>
+          </div>
           </Link>
 
           {/* Desktop Navigation */}
